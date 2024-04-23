@@ -1,0 +1,15 @@
+package learnRA;
+
+import java.util.Arrays;
+
+public class ReversePrinting 
+{
+	public static void main(String[] args)
+	{
+		String src = "i am from mandya";
+		String[] arr = src.split(" ");
+		
+		System.out.println(Arrays.toString(arr));
+	}
+
+}

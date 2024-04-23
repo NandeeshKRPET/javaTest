@@ -1,0 +1,50 @@
+package learn.ra.petStore;
+
+import java.util.HashMap;
+
+import org.testng.annotations.Test;
+
+import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
+
+public class Pet 
+{
+	@Test
+	public void createPet()
+	{
+		HashMap data = new HashMap();
+		data.put("name", "tiger");
+		
+		HashMap<String, String> category = new HashMap<String, String>();
+		category.put("id", "0");
+		category.put("name", "dog");
+		
+		
+		data.put("category", category);
+		
+		
+		RestAssured.given().log().all().body(data).contentType(ContentType.JSON).when().post("https://petstore.swagger.io/v2/pet")
+		.then().assertThat().statusCode(200).log().all();
+		
+	}
+
+}
+
+
+/*
+
+	
+Pet object that needs to be added to the store
+
+Example Value
+Model
+{
+  "category": {
+    "id": 0,
+    "name": "string"
+  },
+  "name": "doggie",
+ 
+}
+
+*/

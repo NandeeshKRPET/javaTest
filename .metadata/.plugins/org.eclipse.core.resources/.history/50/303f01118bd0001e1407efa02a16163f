@@ -1,0 +1,9 @@
+package shooperStack.endToEnd.pojo;
+
+public class Address 
+{
+	private int addressId;
+	
+	
+
+}

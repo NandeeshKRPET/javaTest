@@ -1,0 +1,31 @@
+package learnRA;
+
+public class StartWithSameChar
+{
+	public static void main(String[] args) 
+	{
+		String[] arr = {"ab","abb","abcd","abc"};
+		
+		
+		String result = "";
+		
+		for(int i=0;i<arr.length;i++)
+		{
+			boolean res = true;
+			for(int j=i+1;j<arr.length;j++)
+			{
+				if(arr[i].charAt(i) != arr[j].charAt(i))
+				{
+					res = false;
+					break;
+				}
+			}
+			if(!res)
+			{
+				result=""+arr[i].charAt(i);
+			}
+		}
+		
+	}
+
+}

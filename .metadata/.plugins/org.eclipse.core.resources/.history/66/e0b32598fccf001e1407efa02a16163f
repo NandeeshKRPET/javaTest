@@ -1,0 +1,92 @@
+package learnRA.shopperStack;
+
+import java.util.HashMap;
+
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
+import io.restassured.response.Response;
+
+public class Address 
+{
+	String baseURL = "https://www.shoppersstack.com/shopping";
+	int shopperId;
+	String token;
+	
+	@Test(priority = 1)
+	public void login()
+	{
+		HashMap lb = new HashMap();
+		lb.put("email","nandi.kshankar@gmail.com" );
+		lb.put("password", "Nandi@123");
+		lb.put("role", "SHOPPER");
+		
+		
+		Response resp = RestAssured.given().body(lb).contentType(ContentType.JSON)
+		.when().post(baseURL+"/users/login");
+		
+		int statusCode = resp.getStatusCode();
+		Assert.assertEquals(statusCode, 200);
+		
+		shopperId = resp.jsonPath().get("data.userId");
+		token = resp.jsonPath().get("data.jwtToken");
+		
+		System.out.println("shopper Id  : "+shopperId);
+		System.out.println("Token : "+token);
+		
+		Assert.assertEquals(resp.header("Server"), "nginx");
+	}
+	
+	
+	public void addAddress()
+	{
+		
+		
+		
+		
+		HashMap ab = new HashMap();
+		
+		ab.put("addressId", 0);
+		ab.put("buildingInfo", "demo Building");
+		ab.put("city", "Bengaluru");
+		ab.put("country", "India");
+		ab.put("name", "Nandi");
+		ab.put("phone", 98989898989l);
+		ab.put("pincode", 560010);
+		ab.put("state","karnataka");
+		ab.put("streetInfo", "some street");
+		ab.put("type", "Home");
+		
+		Response resp = RestAssured.given().body(ab).contentType(ContentType.JSON)
+				.when().post(baseURL+"/users/login");
+		
+		
+		
+	}
+	
+	
+
+}
+
+/*
+ * {
+  "addressId": 0,
+  "buildingInfo": "string",
+  "city": "string",
+  "country": "string",
+  "landmark": "string",
+  "name": "string",
+  "phone": "string",
+  "pincode": "string",
+  "state": "string",
+  "streetInfo": "string",
+  "type": "string"
+}
+ */
+
+
+
+
+

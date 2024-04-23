@@ -1,0 +1,9 @@
+package learnRA.shopperStack;
+
+public class Address 
+{
+	String baseURL = "https://www.shoppersstack.com/shopping";
+	int shopperId;
+	String token;
+
+}

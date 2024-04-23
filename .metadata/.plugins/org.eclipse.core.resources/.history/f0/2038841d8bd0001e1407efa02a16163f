@@ -1,0 +1,18 @@
+package shooperStack.endToEnd.pojo;
+
+public class Address 
+{
+	private int addressId;
+	private String buildingInfo;
+	private String city;
+	private String country;
+	private String name;
+	private long phone;
+	private int pincode;
+	private String state;
+	private String streetInfo;
+	private String type;
+	
+	
+
+}
